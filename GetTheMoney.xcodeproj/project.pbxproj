@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4904BCB01CBF21140072985B /* cuttingSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4904BCAF1CBF21140072985B /* cuttingSound.wav */; };
+		492A6BF61CA3E403008B65B9 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A6BF51CA3E403008B65B9 /* MainMenuScene.swift */; };
+		492A6BFE1CA3EFB5008B65B9 /* Bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 492A6BFB1CA3EFB5008B65B9 /* Bomb.png */; };
+		492A6BFF1CA3EFB5008B65B9 /* Dollar.png in Resources */ = {isa = PBXBuildFile; fileRef = 492A6BFC1CA3EFB5008B65B9 /* Dollar.png */; };
+		492A6C001CA3EFB5008B65B9 /* MoneyMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 492A6BFD1CA3EFB5008B65B9 /* MoneyMan.png */; };
+		492A6C021CA3F062008B65B9 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 492A6C011CA3F062008B65B9 /* PlayButton.png */; };
+		492A6C041CA3F8FA008B65B9 /* TutorialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A6C031CA3F8FA008B65B9 /* TutorialScreen.swift */; };
+		492A6C061CA3F907008B65B9 /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A6C051CA3F907008B65B9 /* CreditsScreen.swift */; };
+		495874251CBAEEC70098AB9D /* MoneyBag.png in Resources */ = {isa = PBXBuildFile; fileRef = 495874241CBAEEC70098AB9D /* MoneyBag.png */; };
+		495874271CBAEEF80098AB9D /* WireCutters.png in Resources */ = {isa = PBXBuildFile; fileRef = 495874261CBAEEF80098AB9D /* WireCutters.png */; };
+		49C0E7661C9A8E6200B7D3C9 /* 04B_19__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 49C0E7651C9A8E6200B7D3C9 /* 04B_19__.TTF */; };
+		49D694181C87FD5500A8B322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D694171C87FD5500A8B322 /* AppDelegate.swift */; };
+		49D6941C1C87FD5500A8B322 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D6941B1C87FD5500A8B322 /* GameScene.swift */; };
+		49D6941E1C87FD5500A8B322 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D6941D1C87FD5500A8B322 /* GameViewController.swift */; };
+		49D694211C87FD5500A8B322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D6941F1C87FD5500A8B322 /* Main.storyboard */; };
+		49D694231C87FD5500A8B322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49D694221C87FD5500A8B322 /* Assets.xcassets */; };
+		49D694261C87FD5500A8B322 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D694241C87FD5500A8B322 /* LaunchScreen.storyboard */; };
+		49D694311C88047E00A8B322 /* bombExplosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49D6942E1C88047E00A8B322 /* bombExplosion.wav */; };
+		49D694321C88047E00A8B322 /* golucky.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D6942F1C88047E00A8B322 /* golucky.mp3 */; };
+		49D694331C88047E00A8B322 /* Moneybags.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49D694301C88047E00A8B322 /* Moneybags.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4904BCAF1CBF21140072985B /* cuttingSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cuttingSound.wav; sourceTree = "<group>"; };
+		492A6BF51CA3E403008B65B9 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		492A6BFB1CA3EFB5008B65B9 /* Bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb.png; sourceTree = "<group>"; };
+		492A6BFC1CA3EFB5008B65B9 /* Dollar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dollar.png; sourceTree = "<group>"; };
+		492A6BFD1CA3EFB5008B65B9 /* MoneyMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoneyMan.png; sourceTree = "<group>"; };
+		492A6C011CA3F062008B65B9 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
+		492A6C031CA3F8FA008B65B9 /* TutorialScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen.swift; sourceTree = "<group>"; };
+		492A6C051CA3F907008B65B9 /* CreditsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScreen.swift; sourceTree = "<group>"; };
+		495874241CBAEEC70098AB9D /* MoneyBag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoneyBag.png; sourceTree = "<group>"; };
+		495874261CBAEEF80098AB9D /* WireCutters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WireCutters.png; sourceTree = "<group>"; };
+		49C0E7651C9A8E6200B7D3C9 /* 04B_19__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = 04B_19__.TTF; sourceTree = "<group>"; };
+		49D694141C87FD5500A8B322 /* GetTheMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetTheMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49D694171C87FD5500A8B322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		49D6941B1C87FD5500A8B322 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		49D6941D1C87FD5500A8B322 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		49D694201C87FD5500A8B322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49D694221C87FD5500A8B322 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49D694251C87FD5500A8B322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		49D694271C87FD5500A8B322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49D6942E1C88047E00A8B322 /* bombExplosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bombExplosion.wav; sourceTree = "<group>"; };
+		49D6942F1C88047E00A8B322 /* golucky.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = golucky.mp3; sourceTree = "<group>"; };
+		49D694301C88047E00A8B322 /* Moneybags.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Moneybags.mp3; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49D694111C87FD5500A8B322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49D6940B1C87FD5500A8B322 = {
+			isa = PBXGroup;
+			children = (
+				49D694161C87FD5500A8B322 /* FirstGame */,
+				49D694151C87FD5500A8B322 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49D694151C87FD5500A8B322 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49D694141C87FD5500A8B322 /* GetTheMoney.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49D694161C87FD5500A8B322 /* FirstGame */ = {
+			isa = PBXGroup;
+			children = (
+				49C0E7651C9A8E6200B7D3C9 /* 04B_19__.TTF */,
+				49D694441C88D0A000A8B322 /* Sprites */,
+				49D6942D1C88047E00A8B322 /* Sounds */,
+				49D694171C87FD5500A8B322 /* AppDelegate.swift */,
+				49D6941B1C87FD5500A8B322 /* GameScene.swift */,
+				492A6BF51CA3E403008B65B9 /* MainMenuScene.swift */,
+				492A6C031CA3F8FA008B65B9 /* TutorialScreen.swift */,
+				492A6C051CA3F907008B65B9 /* CreditsScreen.swift */,
+				49D6941D1C87FD5500A8B322 /* GameViewController.swift */,
+				49D6941F1C87FD5500A8B322 /* Main.storyboard */,
+				49D694221C87FD5500A8B322 /* Assets.xcassets */,
+				49D694241C87FD5500A8B322 /* LaunchScreen.storyboard */,
+				49D694271C87FD5500A8B322 /* Info.plist */,
+			);
+			path = FirstGame;
+			sourceTree = "<group>";
+		};
+		49D6942D1C88047E00A8B322 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4904BCAF1CBF21140072985B /* cuttingSound.wav */,
+				49D6942E1C88047E00A8B322 /* bombExplosion.wav */,
+				49D6942F1C88047E00A8B322 /* golucky.mp3 */,
+				49D694301C88047E00A8B322 /* Moneybags.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		49D694441C88D0A000A8B322 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				495874261CBAEEF80098AB9D /* WireCutters.png */,
+				495874241CBAEEC70098AB9D /* MoneyBag.png */,
+				492A6C011CA3F062008B65B9 /* PlayButton.png */,
+				492A6BFB1CA3EFB5008B65B9 /* Bomb.png */,
+				492A6BFC1CA3EFB5008B65B9 /* Dollar.png */,
+				492A6BFD1CA3EFB5008B65B9 /* MoneyMan.png */,
+			);
+			path = Sprites;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49D694131C87FD5500A8B322 /* GetTheMoney */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49D6942A1C87FD5500A8B322 /* Build configuration list for PBXNativeTarget "GetTheMoney" */;
+			buildPhases = (
+				49D694101C87FD5500A8B322 /* Sources */,
+				49D694111C87FD5500A8B322 /* Frameworks */,
+				49D694121C87FD5500A8B322 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GetTheMoney;
+			productName = FirstGame;
+			productReference = 49D694141C87FD5500A8B322 /* GetTheMoney.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49D6940C1C87FD5500A8B322 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Garrett Soumokil";
+				TargetAttributes = {
+					49D694131C87FD5500A8B322 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = YS5594E77F;
+					};
+				};
+			};
+			buildConfigurationList = 49D6940F1C87FD5500A8B322 /* Build configuration list for PBXProject "GetTheMoney" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49D6940B1C87FD5500A8B322;
+			productRefGroup = 49D694151C87FD5500A8B322 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49D694131C87FD5500A8B322 /* GetTheMoney */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49D694121C87FD5500A8B322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				492A6BFE1CA3EFB5008B65B9 /* Bomb.png in Resources */,
+				4904BCB01CBF21140072985B /* cuttingSound.wav in Resources */,
+				495874251CBAEEC70098AB9D /* MoneyBag.png in Resources */,
+				495874271CBAEEF80098AB9D /* WireCutters.png in Resources */,
+				49D694311C88047E00A8B322 /* bombExplosion.wav in Resources */,
+				492A6C001CA3EFB5008B65B9 /* MoneyMan.png in Resources */,
+				492A6C021CA3F062008B65B9 /* PlayButton.png in Resources */,
+				492A6BFF1CA3EFB5008B65B9 /* Dollar.png in Resources */,
+				49D694261C87FD5500A8B322 /* LaunchScreen.storyboard in Resources */,
+				49D694231C87FD5500A8B322 /* Assets.xcassets in Resources */,
+				49D694211C87FD5500A8B322 /* Main.storyboard in Resources */,
+				49D694331C88047E00A8B322 /* Moneybags.mp3 in Resources */,
+				49C0E7661C9A8E6200B7D3C9 /* 04B_19__.TTF in Resources */,
+				49D694321C88047E00A8B322 /* golucky.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49D694101C87FD5500A8B322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49D6941C1C87FD5500A8B322 /* GameScene.swift in Sources */,
+				492A6C041CA3F8FA008B65B9 /* TutorialScreen.swift in Sources */,
+				492A6C061CA3F907008B65B9 /* CreditsScreen.swift in Sources */,
+				49D6941E1C87FD5500A8B322 /* GameViewController.swift in Sources */,
+				492A6BF61CA3E403008B65B9 /* MainMenuScene.swift in Sources */,
+				49D694181C87FD5500A8B322 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		49D6941F1C87FD5500A8B322 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49D694201C87FD5500A8B322 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		49D694241C87FD5500A8B322 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49D694251C87FD5500A8B322 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49D694281C87FD5500A8B322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		49D694291C87FD5500A8B322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49D6942B1C87FD5500A8B322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = FirstGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.FirstGame;
+				PRODUCT_NAME = GetTheMoney;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49D6942C1C87FD5500A8B322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = FirstGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.FirstGame;
+				PRODUCT_NAME = GetTheMoney;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49D6940F1C87FD5500A8B322 /* Build configuration list for PBXProject "GetTheMoney" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49D694281C87FD5500A8B322 /* Debug */,
+				49D694291C87FD5500A8B322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49D6942A1C87FD5500A8B322 /* Build configuration list for PBXNativeTarget "GetTheMoney" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49D6942B1C87FD5500A8B322 /* Debug */,
+				49D6942C1C87FD5500A8B322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49D6940C1C87FD5500A8B322 /* Project object */;
+}
