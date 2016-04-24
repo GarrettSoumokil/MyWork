@@ -15,6 +15,7 @@
 		492A6C021CA3F062008B65B9 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 492A6C011CA3F062008B65B9 /* PlayButton.png */; };
 		492A6C041CA3F8FA008B65B9 /* TutorialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A6C031CA3F8FA008B65B9 /* TutorialScreen.swift */; };
 		492A6C061CA3F907008B65B9 /* CreditsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A6C051CA3F907008B65B9 /* CreditsScreen.swift */; };
+		495648971CC8A76300DC15E6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495648961CC8A76300DC15E6 /* GameKit.framework */; };
 		495874251CBAEEC70098AB9D /* MoneyBag.png in Resources */ = {isa = PBXBuildFile; fileRef = 495874241CBAEEC70098AB9D /* MoneyBag.png */; };
 		495874271CBAEEF80098AB9D /* WireCutters.png in Resources */ = {isa = PBXBuildFile; fileRef = 495874261CBAEEF80098AB9D /* WireCutters.png */; };
 		49C0E7661C9A8E6200B7D3C9 /* 04B_19__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 49C0E7651C9A8E6200B7D3C9 /* 04B_19__.TTF */; };
@@ -38,6 +39,7 @@
 		492A6C011CA3F062008B65B9 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
 		492A6C031CA3F8FA008B65B9 /* TutorialScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScreen.swift; sourceTree = "<group>"; };
 		492A6C051CA3F907008B65B9 /* CreditsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsScreen.swift; sourceTree = "<group>"; };
+		495648961CC8A76300DC15E6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		495874241CBAEEC70098AB9D /* MoneyBag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoneyBag.png; sourceTree = "<group>"; };
 		495874261CBAEEF80098AB9D /* WireCutters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WireCutters.png; sourceTree = "<group>"; };
 		49C0E7651C9A8E6200B7D3C9 /* 04B_19__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = 04B_19__.TTF; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495648971CC8A76300DC15E6 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +71,7 @@
 		49D6940B1C87FD5500A8B322 = {
 			isa = PBXGroup;
 			children = (
+				495648961CC8A76300DC15E6 /* GameKit.framework */,
 				49D694161C87FD5500A8B322 /* FirstGame */,
 				49D694151C87FD5500A8B322 /* Products */,
 			);
@@ -157,7 +161,12 @@
 				TargetAttributes = {
 					49D694131C87FD5500A8B322 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = YS5594E77F;
+						DevelopmentTeam = AD56L22W6J;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -328,7 +337,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FirstGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.FirstGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmoney.getthemoney;
 				PRODUCT_NAME = GetTheMoney;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,7 +352,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FirstGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.fullsail.FirstGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmoney.getthemoney;
 				PRODUCT_NAME = GetTheMoney;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -8,13 +8,16 @@
 
 import UIKit
 import SpriteKit
+import GameKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController{
 
-
+    var localPlayer = GKLocalPlayer.localPlayer()
+    var gcEnabled = Bool() // checks if Game Center is enabled
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.authenticatePlayer()
        // if let scene = GameScene(fileNamed:"GameScene") {
         let scene = MainMenuScene(size: view.bounds.size)
             // Configure the view.
@@ -26,13 +29,18 @@ class GameViewController: UIViewController {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            // scene.scaleMode = .AspectFill
+            //scene.scaleMode = .AspectFill
             //scene.scaleMode = .ResizeFill
             scene.scaleMode = .Fill
-               // scene.size = self.view.bounds.size
+            scene.size = self.view.bounds.size
             //skView.showsPhysics = true
             skView.presentScene(scene)
     //    }
+    }
+
+    
+    override func viewDidAppear(animated: Bool) {
+        authenticatePlayer()
     }
 
     override func shouldAutorotate() -> Bool {
@@ -55,4 +63,27 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    func authenticatePlayer() {
+            // Assigning a block to the localPlayer's
+            // authenticateHandler kicks off the process
+            // of authenticating the user with Game Center.
+                localPlayer.authenticateHandler = { (viewController, error) in
+                    if viewController != nil {
+                        self.presentViewController(viewController!,animated: true, completion: nil)
+    
+                    } else if self.localPlayer.authenticated {
+                        // authenticated, and can now use Game Center features
+                        print("Authenticated!")
+                        self.gcEnabled = true
+                        
+                    } else {
+                        // not authenticated.
+                        print("Local player could not be authenticated.")
+                        print("Error! \(error)")
+                        self.gcEnabled = false
+                }
+            }
+    }
+    
 }

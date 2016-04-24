@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import GameKit
 
 // structure for physics properties
 struct Physics {
@@ -71,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody?.friction = 0
         self.physicsWorld.contactDelegate = self
         
-        scoreLabel.position = CGPoint(x: self.frame.width / 1.1, y: self.frame.height / 1.2)
+        scoreLabel.position = CGPoint(x: self.frame.width / 1.1, y: self.frame.height / 10)
         scoreLabel.text = "\(score)"
         scoreLabel.zPosition = 10
         scoreLabel.fontName = "04b_19"
@@ -80,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(scoreLabel)
         
         pauseBtn.name = "PauseBtn"
-        pauseBtn.position = CGPoint(x: self.frame.width / 1.1, y: self.frame.height / 10)
+        pauseBtn.position = CGPoint(x: self.frame.width / 1.1, y: self.frame.height / 1.2)
         pauseBtn.zPosition = 10
         pauseBtn.fontSize = 50
         pauseBtn.fontName = "04b_19"
@@ -391,14 +392,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             pause = true
             self.speed = 0
             self.physicsWorld.speed = 0
-            backgroundMusic.runAction(SKAction.pause())
+            //backgroundMusic.runAction(SKAction.pause())
             pauseLabel.hidden = false
         } else {
             print("Game Resumed")
             pause = false
             self.speed = 1
             self.physicsWorld.speed = 1
-            backgroundMusic.runAction(SKAction.play())
+            // on exiting pause music sometimes doesnt play and lags game
+            //backgroundMusic.runAction(SKAction.play())
             pauseLabel.hidden = true
         }
 
@@ -406,7 +408,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // function for colliding with dollar sprite. removes money and plays sound
     func getDollar(money:SKSpriteNode, player:SKSpriteNode) {
-        score++
+        score += 1
         scoreLabel.text = "\(score)"
         money.removeFromParent()
         runAction(moneySound)
@@ -494,10 +496,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
             NSUserDefaults.standardUserDefaults().synchronize()
             highScoreLabel.text = "NEW High Score: \(score)!"
+            saveHighscore(score)
         } else {
             highScoreLabel.text = "High Score : \(highScore)"
         }
         
+    }
+    
+    // function to save high score to leaderboards
+    func saveHighscore(score:Int){
+        if GKLocalPlayer.localPlayer().authenticated {
+            let scoreReporter = GKScore(leaderboardIdentifier: "GTM.HighScore")
+            scoreReporter.value = Int64(self.score)
+            let scoreArray: [GKScore] = [scoreReporter]
+            print("report score \(scoreReporter)")
+            GKScore.reportScores(scoreArray, withCompletionHandler: {error -> Void in
+                if error != nil {
+                    print("An error has occured: \(error)")
+                }
+            })
+        }
     }
 
     // function for when contact between to sprites occurs

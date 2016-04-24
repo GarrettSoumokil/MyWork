@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+import GameKit
 
 class TutorialScreen: SKScene, SKPhysicsContactDelegate {
     
@@ -48,7 +49,7 @@ class TutorialScreen: SKScene, SKPhysicsContactDelegate {
         homeLabel.text = "HOME"
         homeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
         homeLabel.name = "HomeLabel"
-        homeLabel.fontSize = 40
+        //homeLabel.fontSize = 40
         homeLabel.fontName = "04b_19"
         homeLabel.fontColor = SKColor.blueColor()
         addChild(homeLabel)
@@ -66,7 +67,7 @@ class TutorialScreen: SKScene, SKPhysicsContactDelegate {
         addChild(player)
         
         playerLabel.text = "Tap to go up"
-        playerLabel.fontSize = 30
+        //playerLabel.fontSize = 30
         playerLabel.fontName = "04b_19"
         playerLabel.fontColor = SKColor.blueColor()
         playerLabel.position = CGPoint(x: viewSize.width * 0.2, y: viewSize.height * 0.33)
@@ -79,7 +80,7 @@ class TutorialScreen: SKScene, SKPhysicsContactDelegate {
         addChild(cash)
         
         cashLabel.text = "Get the $$$"
-        cashLabel.fontSize = 25
+        //cashLabel.fontSize = 25
         cashLabel.fontName = "04b_19"
         cashLabel.fontColor = SKColor.blueColor()
         cashLabel.position = CGPoint(x: viewSize.width * 0.85, y: viewSize.height * 0.7)
@@ -92,7 +93,7 @@ class TutorialScreen: SKScene, SKPhysicsContactDelegate {
         addChild(bomb)
         
         bombLabel.text = "Avoid Bombs"
-        bombLabel.fontSize = 25
+        //bombLabel.fontSize = 25
         bombLabel.fontName = "04b_19"
         bombLabel.fontColor = SKColor.blueColor()
         bombLabel.position = CGPoint(x: viewSize.width * 0.85, y: viewSize.height * 0.4)
@@ -105,10 +106,10 @@ class TutorialScreen: SKScene, SKPhysicsContactDelegate {
         addChild(wireCutters)
         
         wireLabel.text = "Cutters Defuse Bombs"
-        wireLabel.fontSize = 25
+        //wireLabel.fontSize = 25
         wireLabel.fontName = "04b_19"
         wireLabel.fontColor = SKColor.blueColor()
-        wireLabel.position = CGPoint(x: viewSize.width * 0.75, y: size.height * 0.09)
+        wireLabel.position = CGPoint(x: viewSize.width * 0.7, y: size.height * 0.09)
         wireLabel.zPosition = 1
         addChild(wireLabel)
         
