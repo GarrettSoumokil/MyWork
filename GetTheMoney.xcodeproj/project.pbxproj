@@ -88,7 +88,6 @@
 		49D694161C87FD5500A8B322 /* FirstGame */ = {
 			isa = PBXGroup;
 			children = (
-				49C0E7651C9A8E6200B7D3C9 /* 04B_19__.TTF */,
 				49D694441C88D0A000A8B322 /* Sprites */,
 				49D6942D1C88047E00A8B322 /* Sounds */,
 				49D694171C87FD5500A8B322 /* AppDelegate.swift */,
@@ -99,6 +98,7 @@
 				49D6941D1C87FD5500A8B322 /* GameViewController.swift */,
 				49D6941F1C87FD5500A8B322 /* Main.storyboard */,
 				49D694221C87FD5500A8B322 /* Assets.xcassets */,
+				49C0E7651C9A8E6200B7D3C9 /* 04B_19__.TTF */,
 				49D694241C87FD5500A8B322 /* LaunchScreen.storyboard */,
 				49D694271C87FD5500A8B322 /* Info.plist */,
 			);

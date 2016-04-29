@@ -14,8 +14,9 @@ struct Physics {
     static let Man: UInt32 = 0x1 << 1
     static let Money: UInt32 = 0x1 << 2
     static let Bomb: UInt32 = 0x1 << 3
-    static let MoneyBag: UInt32 = 0x1 << 4
-    static let WireCutter: UInt32 = 0x1 << 5
+    static let BombBig: UInt32 = 0x1 << 4
+    static let MoneyBag: UInt32 = 0x1 << 5
+    static let WireCutter: UInt32 = 0x1 << 6
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -46,6 +47,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var homeLabel = SKLabelNode()
     let highScoreLabel = SKLabelNode()
     var highScore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+    
+    var totalMoneyBags = Double()
+    var totalDollars = Double()
+    
+    var gameCenterAchievements = [String: GKAchievement]()
+
     
     // textures for animation
     let textureAtlas = SKTextureAtlas(named: "Explosions")
@@ -114,7 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.frame.height / 2)
         player.physicsBody?.categoryBitMask = Physics.Man
         player.physicsBody?.collisionBitMask = 1
-        player.physicsBody?.contactTestBitMask = Physics.Money | Physics.Bomb | Physics.MoneyBag | Physics.WireCutter
+        player.physicsBody?.contactTestBitMask = Physics.Money | Physics.Bomb | Physics.MoneyBag | Physics.WireCutter | Physics.BombBig
         player.physicsBody?.affectedByGravity = false
         player.physicsBody?.dynamic = true
         player.physicsBody?.allowsRotation = false
@@ -131,6 +138,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //addChild(explodeSprite)
         
         pause = false
+        
+        self.gameCenterAchievements.removeAll()
+        self.loadAchievementPercentages()
         
         // adds background music
         backgroundMusic.autoplayLooped = true
@@ -259,7 +269,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // add physics properties to bomb
         bomb.physicsBody = SKPhysicsBody(circleOfRadius: bomb.frame.height/2)
-        bomb.physicsBody?.categoryBitMask = Physics.Bomb
+        bomb.physicsBody?.categoryBitMask = Physics.BombBig
         bomb.physicsBody?.collisionBitMask = 0//Physics.Man
         bomb.physicsBody?.contactTestBitMask = Physics.Man
         bomb.physicsBody?.dynamic = false
@@ -296,7 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(cutters)
         
-        // determine speed of bomb
+        // determine speed of cutters
         let actualDuration = random(min: CGFloat(3.0), max: CGFloat(4.0))
         // create movement actions
         let actionMove = SKAction.moveTo(CGPoint(x: -cutters.size.width/2, y: trueY), duration: NSTimeInterval(actualDuration))
@@ -339,7 +349,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     ])
                 ))
-                // runAction for addBomb function
+                // runAction for addBigBomb function
             runAction(SKAction.repeatActionForever(
                 SKAction.sequence([
                     SKAction.waitForDuration(NSTimeInterval(bigBombTime)),
@@ -417,6 +427,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func getMoneyBag(money:SKSpriteNode, player:SKSpriteNode) {
         score+=3
         scoreLabel.text = "\(score)"
+        totalMoneyBags+=1
         money.removeFromParent()
         runAction(moneySound)
     }
@@ -492,6 +503,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         pauseBtn.hidden = true
         
+        checkTenDollars()
+        checkFiveMoneyBags()
+        checkTotalDollars()
+        
         if (score > highScore) {
             NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
             NSUserDefaults.standardUserDefaults().synchronize()
@@ -502,21 +517,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-    
-    // function to save high score to leaderboards
-    func saveHighscore(score:Int){
-        if GKLocalPlayer.localPlayer().authenticated {
-            let scoreReporter = GKScore(leaderboardIdentifier: "GTM.HighScore")
-            scoreReporter.value = Int64(self.score)
-            let scoreArray: [GKScore] = [scoreReporter]
-            print("report score \(scoreReporter)")
-            GKScore.reportScores(scoreArray, withCompletionHandler: {error -> Void in
-                if error != nil {
-                    print("An error has occured: \(error)")
-                }
-            })
-        }
-    }
+ 
 
     // function for when contact between to sprites occurs
     func didBeginContact(contact: SKPhysicsContact) {
@@ -555,11 +556,223 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // sound must be played after removeAllActions
             runAction(bombSound)
             SKAction.waitForDuration(3.0)
+            print("Death by little bomb")
             createRestart()
             
+        } else if firstBody.categoryBitMask == Physics.BombBig && secondBody.categoryBitMask == Physics.Man ||
+            firstBody.categoryBitMask == Physics.Man && secondBody.categoryBitMask == Physics.BombBig
+        {
+            // bombExplode function runs. removes player sprite
+            // stops all other sprites as game ends
+            enumerateChildNodesWithName("//*" , usingBlock: ({
+                (node, error) in
+                node.speed = 0
+                self.removeAllActions()
+                
+            }))
+            bombExplode(firstBody.node as! SKSpriteNode, player: secondBody.node as! SKSpriteNode)
+            player.removeFromParent()
+            // sound must be played after removeAllActions
+            runAction(bombSound)
+            SKAction.waitForDuration(3.0)
+            print("Death by big bomb")
+            createRestart()
+            checkBigBomb()
         }
 
+
     }
+    
+    
+    // function to save high score to leaderboards
+    func saveHighscore(score:Int){
+        if GKLocalPlayer.localPlayer().authenticated {
+            let scoreReporter = GKScore(leaderboardIdentifier: "GTM.HighScore")
+            scoreReporter.value = Int64(self.score)
+            let scoreArray: [GKScore] = [scoreReporter]
+            print("report score \(scoreReporter)")
+            GKScore.reportScores(scoreArray, withCompletionHandler: {error -> Void in
+                if error != nil {
+                    print("An error has occured: \(error)")
+                }
+            })
+        }
+    }
+    
+    
+    func checkTenDollars() {
+        if GKLocalPlayer.localPlayer().authenticated {
+            // check if they earned 10 dollars
+            if self.score >= 10 {
+                let achieve = GKAchievement(identifier: "GTM.10Dollars")
+                //notification of achievement 
+                achieve.showsCompletionBanner = true
+                achieve.percentComplete = 100
+                // report achievement
+                GKAchievement.reportAchievements([achieve], withCompletionHandler:{error -> Void in
+                    if error != nil {
+                        print("An error has occured: \(error)")
+                    }
+                })
+            }
+        }
+    }
+    
+    func checkFiveMoneyBags() {
+        if GKLocalPlayer.localPlayer().authenticated {
+            // check if they earned 5 Money Bags
+            let achieve = GKAchievement(identifier: "GTM.5MoneyBags")
+            var bagProgess = Double()
+            if self.totalMoneyBags >= 5 {
+                //notification of achievement
+                achieve.showsCompletionBanner = true
+                achieve.percentComplete = 100
+                // report achievement
+                GKAchievement.reportAchievements([achieve], withCompletionHandler:{error -> Void in
+                    if error != nil {
+                        print("An error has occured: \(error)")
+                    }
+                })
+            } else {
+                //notification of achievement
+                bagProgess = (totalMoneyBags/5.0)*100
+                achieve.showsCompletionBanner = false
+                achieve.percentComplete = bagProgess
+                // report achievement
+                print("Bag progress is \(bagProgess) percent")
+                GKAchievement.reportAchievements([achieve], withCompletionHandler:{error -> Void in
+                    if error != nil {
+                        print("An error has occured: \(error)")
+                    }
+                })
+            }
+        }
+    }
+    
+    func checkBigBomb(){
+        if GKLocalPlayer.localPlayer().authenticated {
+            let achieve = GKAchievement(identifier: "GTM.BigBomb")
+            achieve.showsCompletionBanner = true
+            achieve.percentComplete = 100
+            // report achievement
+            GKAchievement.reportAchievements([achieve], withCompletionHandler:{error -> Void in
+                if error != nil {
+                    print("An error has occured: \(error)")
+                }
+            })
+        }
+    }
+    
+    func checkTotalDollars() {
+        if GKLocalPlayer.localPlayer().authenticated {
+           
+            totalDollars = Double(score)
+            let progress = (totalDollars/500)*100
+            
+            let achieve = GKAchievement(identifier: "GTM.500Dollars")
+            print("Current percent completed \(achieve.percentComplete) %")
+            if (achieve.percentComplete < 100) {
+                print("Gained \(progress) percent")
+                //achieve.percentComplete += progress as Double
+                incrementCurrentPercentOfAchievement("GTM.500Dollars", amount: progress)
+                
+//                GKAchievement.reportAchievements([achieve], withCompletionHandler:{error -> Void in
+//                    if error != nil {
+//                        print("An error has occured: \(error)")
+//                    }
+//                })
+                print("Total percent progress towards 500 is \(achieve.percentComplete) %")
+                if (achieve.percentComplete == 100) {
+                    achieve.percentComplete = 100
+                    achieve.showsCompletionBanner = true
+                    print("completed 500 dollar achievement")
+                }
+            }
+            
+        }
+    }
+    
+    // loads current achivement percentages
+    func loadAchievementPercentages() {
+        print("Loading past achievement Percentages")
+        
+        GKAchievement.loadAchievementsWithCompletionHandler( { (allAchievements, error) -> Void in
+            
+            if error != nil {
+                print("GC could not load achievements. Error: \(error)")
+            } else {
+                // nil if no progress on any achievements
+                if (allAchievements != nil) {
+                    for theAchievement in allAchievements! {
+                        if let singleAchievement:GKAchievement = theAchievement {
+                            
+                            self.gameCenterAchievements[singleAchievement.identifier! ] = singleAchievement
+                        }
+                    }
+                    
+                    for (id, achievement) in self.gameCenterAchievements{
+                        print(" \(id)   -   \(achievement.percentComplete)")
+                    }
+                }
+            }
+        })
+    }
+    // function to increase percentages 
+    func incrementCurrentPercentOfAchievement(identifier:String, amount:Double) {
+        if GKLocalPlayer.localPlayer().authenticated{
+            var currentPercentFound:Bool = false
+            if (gameCenterAchievements.count != 0) {
+                for (id, achievement) in gameCenterAchievements {
+                    if (id == identifier) {
+                        currentPercentFound = true
+                        
+                        var currentPercent: Double = achievement.percentComplete
+                        
+                        currentPercent = currentPercent + amount
+                        
+                        reportAchievement(identifier, percentComplete:currentPercent)
+                        
+                        break
+                    }
+                    
+                    
+                }
+            }
+            
+            if (currentPercentFound == false) {
+                reportAchievement(identifier, percentComplete: amount)
+            }
+            
+        }
+    }
+    
+    func reportAchievement(identifier:String, percentComplete:Double){
+        
+        let achievement = GKAchievement(identifier: identifier)
+        
+        achievement.percentComplete = percentComplete
+        
+        let achievementArray:[GKAchievement] = [achievement]
+        
+        GKAchievement.reportAchievements(achievementArray, withCompletionHandler: {
+            
+            error -> Void in
+            if (error != nil) {
+                print(error)
+            } else {
+                
+                print("reported achievement with percent complete of \(percentComplete)")
+                
+                self.gameCenterAchievements.removeAll()
+                self.loadAchievementPercentages()
+            }
+            
+            
+        })
+        
+        
+    }
+
     
 
 }

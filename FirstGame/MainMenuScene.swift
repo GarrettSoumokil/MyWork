@@ -27,6 +27,8 @@ class MainMenuScene: SKScene, GKGameCenterControllerDelegate {
     let gcEnabled = Bool() // checks if Game Center is enabled
     let gcDefaultLeaderboard = String() // stores default leaderboard
     
+    var gameCenterAchievements = [String: GKAchievement]()
+    
     override func didMoveToView(view: SKView) {
         let viewSize: CGSize = view.bounds.size
         background.position = CGPoint(x: viewSize.width/2, y: viewSize.height/2)
@@ -61,7 +63,7 @@ class MainMenuScene: SKScene, GKGameCenterControllerDelegate {
         resetLabel.zPosition = 10
         resetLabel.fontSize = 20
         resetLabel.fontName = "04b_19"
-        resetLabel.text = "RESET SCORE"
+        resetLabel.text = "RESET ALL"
         resetLabel.fontColor = SKColor.redColor()
         resetLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
         addChild(resetLabel)
@@ -119,10 +121,11 @@ class MainMenuScene: SKScene, GKGameCenterControllerDelegate {
                 let scene = TutorialScreen(size: self.size)
                 self.view?.presentScene(scene) //, transition: SKTransition.crossFadeWithDuration(1.0))
             } else if (touchedNode.name == "resetLabel") {
-               resetHighScore()
+                resetHighScore()
+                //clearAchievementsInGC()
             highScoreLabel.text = "Current High Score: 0"
             } else if (touchedNode.name == "gcBtn"){
-                showLeaderboard()
+                showGameCenter()
             }
         }
     }
@@ -137,13 +140,30 @@ class MainMenuScene: SKScene, GKGameCenterControllerDelegate {
     }
     
     
-    func showLeaderboard() {
+    func showGameCenter() {
         let vc = self.view?.window?.rootViewController
         let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcVC.viewState = GKGameCenterViewControllerState.Achievements
         gcVC.leaderboardIdentifier = nil
         vc?.presentViewController(gcVC, animated: true, completion: nil)
+        
+    }
+    
+    // resets all achievements 
+    func clearAchievementsInGC() {
+        GKAchievement.resetAchievementsWithCompletionHandler{
+            (error)  -> Void in
+            if (error != nil) {
+                print(error)
+            } else {
+                print("clearing all achievements in GC")
+                
+                self.gameCenterAchievements.removeAll()
+            }
+        }
+        
     }
     
     

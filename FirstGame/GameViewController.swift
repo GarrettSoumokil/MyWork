@@ -14,6 +14,7 @@ class GameViewController: UIViewController{
 
     var localPlayer = GKLocalPlayer.localPlayer()
     var gcEnabled = Bool() // checks if Game Center is enabled
+    //var gameCenterAchievements = [String: GKAchievement]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,9 @@ class GameViewController: UIViewController{
                         print("Authenticated!")
                         self.gcEnabled = true
                         
+                        //self.gameCenterAchievements.removeAll()
+                        //self.loadAchievementPercentages()
+                        
                     } else {
                         // not authenticated.
                         print("Local player could not be authenticated.")
@@ -85,5 +89,6 @@ class GameViewController: UIViewController{
                 }
             }
     }
+    
     
 }
